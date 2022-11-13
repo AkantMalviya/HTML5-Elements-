@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <!-- Outer Java script for drag and drop -->
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+        
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+        
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+           </script>
+
+    <body>
+        <!-- Headers and Headings -->
+        <header>
+            <h1>Most important heading</h1>
+            <h3>Less important heading</h3>
+        </header>
+        <!-- Navigation Elements -->
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About us</a></li>
+            </ul>
+        </nav>
+        <!-- Articles sections asides inner contents -->
+        <article>
+            <h1>The article title</h1> 
+            <p>Contents of the article element </p>
+            <article>
+                <h1>Welcome</h1>
+                <section>
+                    <h1>Heading</h1>
+                    <p>content or image</p>
+                </section>
+            </article>
+        </article>
+        <article>
+            <h1> Gifts for everyone</h1>
+            <p>This website will be the best place for choosing gifts</p>
+            <aside>
+                <p>Gifts will be delivered to you within 24 hours</p>
+            </aside>
+        </article>
+        <article>
+            <!-- Audio Status Progress -->
+            <h4>Harry Potter Theme</h4>
+            <audio src="harrypotter.mp3" controls>
+                Audio element not supported by your browser
+            </audio>
+            Status: <progress min="0" max="100" value="90"> 
+            </progress>
+            <h4>Game of Thrones Theme</h4>
+            <audio controls autoplay>
+                <source src="gameofthrones.mp3" type="audio/mpeg">
+            </audio>
+            <!-- Videos -->
+            <video controls loop>
+                <source src="GOT.mp4" type="video/mp4">
+                Video is not supported by your browser
+             </video>
+             Status: <progress min="0" max="100" value="40"> 
+            </progress>
+        </article>
+        <footer>
+            - Contact Information
+            - Privacy Policy
+            - Social Media Icons
+            - Terms of Service
+            - Copyright Information
+            - Sitemap and Related Documents
+        </footer>
+        <!-- drag and drop API through java script -->
+        <div id="box" ondrop="drop(event)"
+        ondragover="allowDrop(event)"
+        style="border:1px solid black; 
+        width:200px; height:200px"></div>
+     
+        <img id="image" src="harry.jpg" draggable="true"
+        ondragstart="drag(event)" width="50" height="150" alt="" />
+        <!-- <img src="harry.svg" alt="" width="100px" height="150px"> -->
+        <!-- SVG for Scalable Vector Graphics -->
+        <svg width ="1000" height="500">
+            <circle cx="100" cy="200" r="50" fill="green" stroke="black" stroke-width="2"/>
+            <rect width="300" height="100" x="180" y="200" fill="green" stroke="black" stroke-width="2"/>
+            <line x1="10" y1="10" x2="200" y2="100" style="stroke:#000000; stroke-linecap:round; stroke-width:20"  />
+            <polyline style="stroke-linejoin:miter; stroke:black; stroke-width:12; fill: none;" points="100 100, 150 150, 200 100" />
+        </svg>>
+        <svg height="500" width="1000">
+            <ellipse cx="200" cy="100" rx="150" ry="70" style="fill:green; stroke: black;" />
+            <polygon points="200 200, 300 300, 400 0" style="fill: green; stroke:black;" />
+         </svg>
+         <svg width="1000" height="250">
+            <rect width="150" height="150" fill="orange">
+                <animate attributeName="x" from="0" to="300"
+              dur="3s" fill="freeze" repeatCount="indefinite"/> 
+            </rect>
+            <!-- It will work like pencil path -->
+            <path d="M 0 0 L200 200 L200 0 Z" dur="3s" style="stroke:#000;  fill:none;" />
+            <path d="M0 0  L0 100 L100 100  L100 0  Z" />
+        </svg>
+        <!-- Canvas Also For Graphics made by javascript -->
+        <canvas id="canvas1" 
+        width="400" height="300"></canvas> 
+     
+        <script>
+           var can = document.getElementById("canvas1"); 
+           var ctx = can.getContext("2d");
+           ctx.fillStyle ="rgba(200, 200, 0, 1)";
+           ctx.fillRect(20,20,100,100);
+           ctx.fillStyle = "#FF0000";
+            ctx.fillRect(10,10, 100, 100);
+
+            ctx.rotate( (Math.PI / 180) * 25);  //rotate 25 degrees.
+
+            ctx.fillStyle = "#0000FF";
+            ctx.fillRect(10,10, 100, 100);
+        </script>
+                <canvas id="canvas2" width="400" height="300">
+                </canvas> 
+            <script>
+                var c=document.getElementById("canvas2");
+                var ctx=c.getContext("2d");
+                ctx.font="bold 22px Tahoma";
+                ctx.textAlign="start";
+                ctx.fillText("start", 10, 30);
+                ctx.translate(100, 150);
+                ctx.fillText("after translate", 10, 30);
+            </script>
+               <canvas id="canvas3" width="400" height="400">
+            </canvas> 
+        <script>
+            var canvas = document.getElementById('canvas3');
+            ctx =canvas.getContext('2d');
+            ctx.font="bold 22px Tahoma";
+            ctx.textAlign="start";
+            ctx.fillText("start", 10, 30);
+            ctx.translate(100, 150);
+            ctx.fillText("after translate", 0, 0);
+            ctx.rotate(1);
+            ctx.fillText("after rotate", 0, 0);
+            ctx.scale(1.5, 4);
+            ctx.fillText("after scale", 0,20);
+        </script>
+        <!-- HTML 5 Forms -->
+        <form action="" autocomplete="off">
+            <label for="">Google Search</label>
+            <input id="mysearch" name="searchitem" type="search" />
+            <label for="">Your Name</label>
+            <input id="mes" type="text" id="user" name="username" list="Names"/>
+            <label for="email">Your e-mail address: </label>
+            <input type="email" name="email" placeholder="email@example.com" required autofocus/><br/>
+            <input id="url" name="url" type="url" placeholder="example.com" />
+            <br />
+            <input id="tel" name="tel" type="tel" placeholder="555.555.1211" />
+            <input type="submit" value="Submit"/>
+            <datalist id="Names">
+                <option value="Harry Potter">
+                <option value="Ron Weasely">
+                <option value="Harmoine Granzer">
+            </datalist>
+        </form>
+    </body>
+</html>
